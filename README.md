@@ -14,7 +14,7 @@ $ openssl req -x509 -out localhost.crt -keyout localhost.key \
 2. Run the server without HTTP/2 enabled:
 
 ```sh
-$ go run main.go -enablePush false
+$ go run main.go -enablePush=false
 ```
 
 3. Visit https://localhost:8080/?n=1000
@@ -22,5 +22,15 @@ $ go run main.go -enablePush false
 4. Restart the server with push enabled & visit the page again:
 
 ```sh
-$ go run main.go
+$ go run main.go -enablePush=true
 ```
+
+## Results (1k files, fast 3G)
+
+With push:
+
+![with push](./assets/with_push.png)
+
+Without push:
+
+![without push](./assets/without_push.png)

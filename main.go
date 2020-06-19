@@ -76,11 +76,8 @@ func main() {
 		if ok && *enablePush {
 			for i := 0; i < n; i++ {
 				assetPath := fmt.Sprintf("/file?n=%d", i)
-				err := pusher.Push(assetPath, nil)
-				if err != nil {
+				if err := pusher.Push(assetPath, nil); err != nil {
 					log.Printf("Failed to push: %v", err)
-				} else {
-					log.Printf("Succesfully pushed %s", assetPath)
 				}
 			}
 		}
